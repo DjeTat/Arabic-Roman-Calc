@@ -3,14 +3,14 @@ package calcRun;
 import java.util.HashMap;
 
 public class DataValidation {
-    String[] dataArray;
-    int firstElement;
-    int secondElement;
-    char mathSymbol;
-    private boolean isFirstRoman;
-    private boolean isFirstArabic;
+    static String[] dataArray;
+    static int firstElement;
+    static int secondElement;
+    static char mathSymbol;
+    static boolean isFirstRoman;
+    static boolean isFirstArabic;
 
-    public void checkElements(String userData) throws InputException {
+    public static void checkElements() throws InputException {
         dataArray = InputReader.userData.toUpperCase().split(" ");
 
         if (dataArray.length != 3) {
