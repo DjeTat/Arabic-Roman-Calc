@@ -1,16 +1,13 @@
 package calcRun;
 
-import java.util.Scanner;
-
 public class CalculatorRunner {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InputException {
 
-        Scanner input = new Scanner(System.in);
+        String userData = InputReader.getInputData();
 
-        System.out.println("\nEnter your data for calculating using Arabic or " +
-                "Roman numbers from 1 to 10 and Math symbols (+ - / * ^).\nSeparate your input by a space: ");
-        String calcData = input.nextLine();
+        DataValidation validation = new DataValidation();
+        validation.checkElements(userData);
 
     }
 }
