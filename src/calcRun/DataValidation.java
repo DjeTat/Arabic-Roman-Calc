@@ -77,7 +77,7 @@ public class DataValidation {
         if (mathSymbols.containsKey(String.valueOf(dataArray[1]))) {
             mathSymbol = mathSymbols.get(dataArray[1]);
         } else {
-            throw new InputException("Incorrect input. Enter required math symbols");
+            throw new InputException("Incorrect input. Enter required math symbol");
         }
     }
 }
