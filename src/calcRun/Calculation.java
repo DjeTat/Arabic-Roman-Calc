@@ -1,7 +1,7 @@
 package calcRun;
 
 public class Calculation {
-    static int resultArabic;
+    static long resultArabic;
     public static void calculate() {
 
         if (DataValidation.mathSymbol == '^') {

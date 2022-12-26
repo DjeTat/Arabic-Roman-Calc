@@ -1,7 +1,6 @@
 package calcRun;
 
 import java.util.Scanner;
-
 public class InputReader {
     static String userData;
     public static void getInputData() {

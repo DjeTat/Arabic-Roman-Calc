@@ -10,7 +10,7 @@ public class CalculatorRunner {
         Calculation.calculate();
 
         if (DataValidation.isFirstArabic) {
-            System.out.println(Calculation.resultArabic);
+            System.out.printf("%,d", Calculation.resultArabic);
         } else {
             ConverterToRoman.getRomanNumber();
             System.out.println(ConverterToRoman.resultRoman);
