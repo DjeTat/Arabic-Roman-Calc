@@ -1,83 +1,49 @@
 package calcRun;
 
-import java.util.HashMap;
-
 public class DataValidation {
-    static String[] dataArray;
-    static int firstElement;
-    static int secondElement;
-    static char mathSymbol;
-    static boolean isFirstRoman;
-    static boolean isFirstArabic;
+    private static int firstElement;
+    private static int secondElement;
+    private static String mathSymbol;
+    private static boolean areNumbersArabic;
 
     public static void checkElements() throws InputException {
-        dataArray = InputReader.userData.toUpperCase().split(" ");
+        String[] dataArray = InputReader.getUserData().toUpperCase().split(" ");
 
         if (dataArray.length != 3) {
             throw new InputException("Invalid input. Try again");
         }
 
-        HashMap<String, Integer> romanSymbols = new HashMap<>();
-        romanSymbols.put("I", 1);
-        romanSymbols.put("II", 2);
-        romanSymbols.put("III", 3);
-        romanSymbols.put("IV", 4);
-        romanSymbols.put("V", 5);
-        romanSymbols.put("VI", 6);
-        romanSymbols.put("VII", 7);
-        romanSymbols.put("VIII", 8);
-        romanSymbols.put("IX", 9);
-        romanSymbols.put("X", 10);
-
-        HashMap<String, Integer> arabicSymbols = new HashMap<>();
-        arabicSymbols.put("1", 1);
-        arabicSymbols.put("2", 2);
-        arabicSymbols.put("3", 3);
-        arabicSymbols.put("4", 4);
-        arabicSymbols.put("5", 5);
-        arabicSymbols.put("6", 6);
-        arabicSymbols.put("7", 7);
-        arabicSymbols.put("8", 8);
-        arabicSymbols.put("9", 9);
-        arabicSymbols.put("10", 10);
-
-        HashMap<String, Character> mathSymbols = new HashMap<>();
-        mathSymbols.put("+", '+');
-        mathSymbols.put("-", '-');
-        mathSymbols.put("*", '*');
-        mathSymbols.put("/", '/');
-        mathSymbols.put("^", '^');
-
-        if (romanSymbols.containsKey(String.valueOf(dataArray[0]))) {
-            isFirstRoman = true;
-            firstElement = romanSymbols.get(dataArray[0]);
-        } else if (arabicSymbols.containsKey(String.valueOf(dataArray[0]))) {
-            isFirstArabic = true;
-            firstElement = arabicSymbols.get(dataArray[0]);
-        } else {
-            throw new InputException("Incorrect input. Try again");
-        }
-
-        if (romanSymbols.containsKey(String.valueOf(dataArray[2]))) {
-            if (isFirstRoman) {
-                secondElement = romanSymbols.get(dataArray[2]);
-            } else {
-                throw new InputException("Incorrect input. Both numbers should be Arabic");
-            }
-        } else if (arabicSymbols.containsKey(String.valueOf(dataArray[2]))) {
-            if (isFirstArabic) {
-                secondElement = arabicSymbols.get(dataArray[2]);
-            } else {
-                throw new InputException("Incorrect input. Both numbers should be Roman");
-            }
+        if(RomanNumber.areNumbersValid(String.valueOf(dataArray[0]), String.valueOf(dataArray[2]))) {
+            firstElement = RomanNumber.getNumberValue(String.valueOf(dataArray[0]));
+            secondElement = RomanNumber.getNumberValue(String.valueOf(dataArray[2]));
+        } else if (ArabicNumber.areNumbersValid(String.valueOf(dataArray[0]), String.valueOf(dataArray[2]))){
+            firstElement = ArabicNumber.getNumberValue(String.valueOf(dataArray[0]));
+            secondElement = ArabicNumber.getNumberValue(String.valueOf(dataArray[2]));
+            areNumbersArabic = true;
         } else {
             throw new InputException("Invalid input. Try again");
         }
 
-        if (mathSymbols.containsKey(String.valueOf(dataArray[1]))) {
-            mathSymbol = mathSymbols.get(dataArray[1]);
+        if(MathSymbol.isMathSymbolValid(String.valueOf(dataArray[1]))) {
+            mathSymbol = MathSymbol.getMathSymbol(String.valueOf(dataArray[1]));
         } else {
-            throw new InputException("Incorrect input. Enter required math symbol");
+            throw new InputException("Invalid input. Try again");
         }
+   }
+
+    public static int getFirstElement() {
+        return firstElement;
+    }
+
+    public static int getSecondElement() {
+        return secondElement;
+    }
+
+    public static String getMathSymbol() {
+        return mathSymbol;
+    }
+
+    public static boolean isAreNumbersArabic() {
+        return areNumbersArabic;
     }
 }

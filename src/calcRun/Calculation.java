@@ -1,22 +1,25 @@
 package calcRun;
 
 public class Calculation {
-    static long resultArabic;
+    private static long resultArabic;
     public static void calculate() {
 
-        if (DataValidation.mathSymbol == '^') {
+        if (DataValidation.getMathSymbol().equals("^")) {
             resultArabic = 1;
-            for (int i = 1; i <= DataValidation.secondElement; i++) {
-                resultArabic = resultArabic * DataValidation.firstElement;
+            for (int i = 1; i <= DataValidation.getSecondElement(); i++) {
+                resultArabic = resultArabic * DataValidation.getFirstElement();
             }
         } else {
-            resultArabic = switch (DataValidation.mathSymbol) {
-                case '+' -> DataValidation.firstElement + DataValidation.secondElement;
-                case '-' -> DataValidation.firstElement - DataValidation.secondElement;
-                case '*' -> DataValidation.firstElement * DataValidation.secondElement;
-                case '/' -> DataValidation.firstElement / DataValidation.secondElement;
+            resultArabic = switch (DataValidation.getMathSymbol()) {
+                case "+" -> DataValidation.getFirstElement() + DataValidation.getSecondElement();
+                case "-" -> DataValidation.getFirstElement() - DataValidation.getSecondElement();
+                case "*" -> (long) DataValidation.getFirstElement() * DataValidation.getSecondElement();
+                case "/" -> DataValidation.getFirstElement() / DataValidation.getSecondElement();
                 default -> -1;
             };
         }
+    }
+    public static long getResultArabic() {
+        return resultArabic;
     }
 }

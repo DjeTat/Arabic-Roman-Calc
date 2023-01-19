@@ -2,8 +2,8 @@ package calcRun;
 
 import java.util.Scanner;
 public class InputReader {
-    static String userData;
-    public static void getInputData() {
+    private static String userData;
+    public static void readInputData() {
 
         Scanner input = new Scanner(System.in);
         System.out.println("""
@@ -12,5 +12,8 @@ public class InputReader {
                 Separate your input by a space:\s""");
         userData = input.nextLine();
         input.close();
+    }
+    public static String getUserData() {
+        return userData;
     }
 }

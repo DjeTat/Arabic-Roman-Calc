@@ -3,17 +3,17 @@ package calcRun;
 public class CalculatorRunner {
     public static void main(String[] args) throws InputException {
 
-        InputReader.getInputData();
+        InputReader.readInputData();
 
         DataValidation.checkElements();
 
         Calculation.calculate();
 
-        if (DataValidation.isFirstArabic) {
-            System.out.printf("%,d", Calculation.resultArabic);
+        if (DataValidation.isAreNumbersArabic()) {
+            System.out.printf("%,d", Calculation.getResultArabic());
         } else {
             ConverterToRoman.getRomanNumber();
-            System.out.println(ConverterToRoman.resultRoman);
+            System.out.println(ConverterToRoman.getResultRoman());
         }
     }
 }
