@@ -1,12 +1,12 @@
 package calcRun;
 
-public class InputDataConversion {
+public class InputDataDefinition {
     private static int firstElement;
     private static int secondElement;
     private static String mathSymbol;
     private static boolean areNumbersRoman;
 
-    public static void checkElements() throws InputException {
+    public static void defineElements() throws InputException {
         String[] dataArray = InputReader.readInputData().toUpperCase().split(" ");
 
         if (dataArray.length != 3) {
@@ -27,8 +27,7 @@ public class InputDataConversion {
         if (MathSymbol.isMathSymbolValid(String.valueOf(dataArray[1]))) {
             mathSymbol = MathSymbol.getMathSymbol(String.valueOf(dataArray[1]));
         } else {
-            throw new InputException("Invalid input. Try again");
-        }
+            throw new InputException("Invalid input. Try again");        }
     }
 
     public static int getFirstElement() {

@@ -6,7 +6,7 @@ public class Calculation {
     public static String getResult() throws InputException {
         String finalResult;
 
-        if (InputDataConversion.isAreNumbersRoman()) {
+        if (InputDataDefinition.isAreNumbersRoman()) {
             finalResult = ConverterToRoman.getResultRoman();
         } else {
             finalResult = String.valueOf(arabicResult);
@@ -14,19 +14,21 @@ public class Calculation {
         return finalResult;
     }
 
-    public static long calculate() {
+    public static long calculate() throws InputException {
 
-        if (InputDataConversion.getMathSymbol().equals("^")) {
+        InputDataDefinition.defineElements();
+
+        if (InputDataDefinition.getMathSymbol().equals("^")) {
             arabicResult = 1;
-            for (int i = 1; i <= InputDataConversion.getSecondElement(); i++) {
-                arabicResult = arabicResult * InputDataConversion.getFirstElement();
+            for (int i = 1; i <= InputDataDefinition.getSecondElement(); i++) {
+                arabicResult = arabicResult * InputDataDefinition.getFirstElement();
             }
         } else {
-            arabicResult = switch (InputDataConversion.getMathSymbol()) {
-                case "+" -> InputDataConversion.getFirstElement() + InputDataConversion.getSecondElement();
-                case "-" -> InputDataConversion.getFirstElement() - InputDataConversion.getSecondElement();
-                case "*" -> (long) InputDataConversion.getFirstElement() * InputDataConversion.getSecondElement();
-                case "/" -> InputDataConversion.getFirstElement() / InputDataConversion.getSecondElement();
+            arabicResult = switch (InputDataDefinition.getMathSymbol()) {
+                case "+" -> InputDataDefinition.getFirstElement() + InputDataDefinition.getSecondElement();
+                case "-" -> InputDataDefinition.getFirstElement() - InputDataDefinition.getSecondElement();
+                case "*" -> (long) InputDataDefinition.getFirstElement() * InputDataDefinition.getSecondElement();
+                case "/" -> InputDataDefinition.getFirstElement() / InputDataDefinition.getSecondElement();
                 default -> -1;
             };
         }
