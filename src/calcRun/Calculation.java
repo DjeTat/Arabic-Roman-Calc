@@ -1,25 +1,36 @@
 package calcRun;
 
 public class Calculation {
-    private static long resultArabic;
-    public static void calculate() {
+    private static long arabicResult;
 
-        if (DataConversion.getMathSymbol().equals("^")) {
-            resultArabic = 1;
-            for (int i = 1; i <= DataConversion.getSecondElement(); i++) {
-                resultArabic = resultArabic * DataConversion.getFirstElement();
+    public static String getResult() throws InputException {
+        String finalResult;
+
+        if (InputDataConversion.isAreNumbersRoman()) {
+            finalResult = ConverterToRoman.getResultRoman();
+        } else {
+            finalResult = String.valueOf(arabicResult);
+        }
+        return finalResult;
+    }
+
+    public static long calculate() {
+
+        if (InputDataConversion.getMathSymbol().equals("^")) {
+            arabicResult = 1;
+            for (int i = 1; i <= InputDataConversion.getSecondElement(); i++) {
+                arabicResult = arabicResult * InputDataConversion.getFirstElement();
             }
         } else {
-            resultArabic = switch (DataConversion.getMathSymbol()) {
-                case "+" -> DataConversion.getFirstElement() + DataConversion.getSecondElement();
-                case "-" -> DataConversion.getFirstElement() - DataConversion.getSecondElement();
-                case "*" -> (long) DataConversion.getFirstElement() * DataConversion.getSecondElement();
-                case "/" -> DataConversion.getFirstElement() / DataConversion.getSecondElement();
+            arabicResult = switch (InputDataConversion.getMathSymbol()) {
+                case "+" -> InputDataConversion.getFirstElement() + InputDataConversion.getSecondElement();
+                case "-" -> InputDataConversion.getFirstElement() - InputDataConversion.getSecondElement();
+                case "*" -> (long) InputDataConversion.getFirstElement() * InputDataConversion.getSecondElement();
+                case "/" -> InputDataConversion.getFirstElement() / InputDataConversion.getSecondElement();
                 default -> -1;
             };
         }
-    }
-    public static long getResultArabic() {
-        return resultArabic;
+        return arabicResult;
     }
 }
+
