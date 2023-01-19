@@ -5,11 +5,11 @@ public class CalculatorRunner {
 
         InputReader.readInputData();
 
-        DataValidation.checkElements();
+        DataConversion.checkElements();
 
         Calculation.calculate();
 
-        if (DataValidation.isAreNumbersArabic()) {
+        if (DataConversion.isAreNumbersArabic()) {
             System.out.printf("%,d", Calculation.getResultArabic());
         } else {
             ConverterToRoman.getRomanNumber();

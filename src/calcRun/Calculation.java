@@ -4,17 +4,17 @@ public class Calculation {
     private static long resultArabic;
     public static void calculate() {
 
-        if (DataValidation.getMathSymbol().equals("^")) {
+        if (DataConversion.getMathSymbol().equals("^")) {
             resultArabic = 1;
-            for (int i = 1; i <= DataValidation.getSecondElement(); i++) {
-                resultArabic = resultArabic * DataValidation.getFirstElement();
+            for (int i = 1; i <= DataConversion.getSecondElement(); i++) {
+                resultArabic = resultArabic * DataConversion.getFirstElement();
             }
         } else {
-            resultArabic = switch (DataValidation.getMathSymbol()) {
-                case "+" -> DataValidation.getFirstElement() + DataValidation.getSecondElement();
-                case "-" -> DataValidation.getFirstElement() - DataValidation.getSecondElement();
-                case "*" -> (long) DataValidation.getFirstElement() * DataValidation.getSecondElement();
-                case "/" -> DataValidation.getFirstElement() / DataValidation.getSecondElement();
+            resultArabic = switch (DataConversion.getMathSymbol()) {
+                case "+" -> DataConversion.getFirstElement() + DataConversion.getSecondElement();
+                case "-" -> DataConversion.getFirstElement() - DataConversion.getSecondElement();
+                case "*" -> (long) DataConversion.getFirstElement() * DataConversion.getSecondElement();
+                case "/" -> DataConversion.getFirstElement() / DataConversion.getSecondElement();
                 default -> -1;
             };
         }

@@ -1,6 +1,6 @@
 package calcRun;
 
-public class DataValidation {
+public class DataConversion {
     private static int firstElement;
     private static int secondElement;
     private static String mathSymbol;
