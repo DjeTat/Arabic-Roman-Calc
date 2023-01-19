@@ -30,7 +30,6 @@ public class DataConversion {
             throw new InputException("Invalid input. Try again");
         }
    }
-
     public static int getFirstElement() {
         return firstElement;
     }
