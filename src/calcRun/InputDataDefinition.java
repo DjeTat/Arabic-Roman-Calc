@@ -1,48 +1,44 @@
 package calcRun;
 
+import java.util.List;
+
 public class InputDataDefinition {
-    private static int firstElement;
-    private static int secondElement;
-    private static String mathSymbol;
     private static boolean areNumbersRoman;
 
-    public static void defineElements() throws InputException {
-        String[] dataArray = InputReader.readInputData().toUpperCase().split(" ");
-
-        if (dataArray.length != 3) {
-            throw new InputException("Invalid input. Try again");
-        }
-
-        if (RomanNumber.areNumbersValid(String.valueOf(dataArray[0]), String.valueOf(dataArray[2]))) {
-            firstElement = RomanNumber.getNumberValue(String.valueOf(dataArray[0]));
-            secondElement = RomanNumber.getNumberValue(String.valueOf(dataArray[2]));
+    public static long defineFirstElement(List<String> userData) throws InputException {
+        if (RomanNumber.areNumbersValid(userData)) {
             areNumbersRoman = true;
-        } else if (ArabicNumber.areNumbersValid(String.valueOf(dataArray[0]), String.valueOf(dataArray[2]))) {
-            firstElement = ArabicNumber.getNumberValue(String.valueOf(dataArray[0]));
-            secondElement = ArabicNumber.getNumberValue(String.valueOf(dataArray[2]));
+            return RomanNumber.defineNumberValue(userData.get(0));
+        } else if (ArabicNumber.areNumbersValid(userData)) {
+            return ArabicNumber.defineNumberValue(userData.get(0));
+        } else {
+            throw new InputException("Invalid input.Try again");
+        }
+    }
+
+    public static long defineSecondElement(List<String> userData) throws InputException {
+        if (RomanNumber.areNumbersValid(userData)) {
+            return RomanNumber.defineNumberValue(userData.get(2));
+        } else if (ArabicNumber.areNumbersValid(userData)) {
+            return ArabicNumber.defineNumberValue(userData.get(2));
+        } else {
+            throw new InputException("Invalid input.Try again");
+        }
+    }
+
+    public static String defineMathSymbol(List<String> userData) throws InputException {
+        if (MathSymbol.isMathSymbolValid(userData)) {
+            return userData.get(1);
         } else {
             throw new InputException("Invalid input. Try again");
         }
+    }
 
-        if (MathSymbol.isMathSymbolValid(String.valueOf(dataArray[1]))) {
-            mathSymbol = MathSymbol.getMathSymbol(String.valueOf(dataArray[1]));
+    public static String defineResult(long tempResult) throws InputException {
+        if (areNumbersRoman) {
+            return ConverterToRoman.convert(tempResult);
         } else {
-            throw new InputException("Invalid input. Try again");        }
-    }
-
-    public static int getFirstElement() {
-        return firstElement;
-    }
-
-    public static int getSecondElement() {
-        return secondElement;
-    }
-
-    public static String getMathSymbol() {
-        return mathSymbol;
-    }
-
-    public static boolean isAreNumbersRoman() {
-        return areNumbersRoman;
+            return String.valueOf(tempResult);
+        }
     }
 }

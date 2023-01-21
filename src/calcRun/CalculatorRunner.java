@@ -1,13 +1,15 @@
 package calcRun;
 
+import java.util.List;
+
 public class CalculatorRunner {
     public static void main(String[] args) throws InputException {
 
-        String inputParameters = InputReader.readInputData();
+        List<String> userData = InputReader.readInputData();
 
-        String result = Calculation.getResult();
+        String result = Calculation.calculate(userData);
 
-        System.out.println(result);
+        System.out.printf(result);
     }
 }
 

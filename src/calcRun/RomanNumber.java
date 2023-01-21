@@ -1,5 +1,6 @@
 package calcRun;
 
+import java.util.List;
 import java.util.Map;
 
 public class RomanNumber {
@@ -7,11 +8,13 @@ public class RomanNumber {
             3, "IV", 4, "V", 5, "VI", 6, "VII",
             7, "VIII", 8, "IX", 9, "X", 10);
 
-    public static boolean areNumbersValid(String firstSymbol, String secondSymbol) {
-        return ROMAN_NUMBERS.containsKey(firstSymbol) && ROMAN_NUMBERS.containsKey(secondSymbol);
+
+
+    public static boolean areNumbersValid(List<String> userData) {
+        return ROMAN_NUMBERS.containsKey(userData.get(0)) && ROMAN_NUMBERS.containsKey(userData.get(2));
     }
 
-    public static int getNumberValue(String symbol) {
-        return ROMAN_NUMBERS.get(symbol);
+    public static long defineNumberValue(String number) {
+        return ROMAN_NUMBERS.get(number);
     }
 }

@@ -1,8 +1,11 @@
 package calcRun;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
+
 public class InputReader {
-    public static String readInputData() {
+    public static List<String> readInputData() {
 
         Scanner input = new Scanner(System.in);
         System.out.println("""
@@ -12,8 +15,6 @@ public class InputReader {
         String userData = input.nextLine();
         input.close();
 
-        return userData;
+        return Arrays.stream(userData.toUpperCase().split(" ")).toList();
     }
-
-
 }
