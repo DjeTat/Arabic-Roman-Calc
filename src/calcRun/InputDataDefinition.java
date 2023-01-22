@@ -5,6 +5,7 @@ import java.util.List;
 public class InputDataDefinition {
     private static boolean areNumbersRoman;
 
+
     public static long defineFirstElement(List<String> userData) throws InputException {
         if (RomanNumber.areNumbersValid(userData)) {
             areNumbersRoman = true;
@@ -41,4 +42,14 @@ public class InputDataDefinition {
             return String.valueOf(tempResult);
         }
     }
+
+//    private static boolean numbersType (List<String> userData) throws InputException {
+//        if (RomanNumber.areNumbersValid(userData)) {
+//            return areNumbersRoman = true;
+//        } else if (ArabicNumber.areNumbersValid(userData)) {
+//            return areNumbersRoman = false;
+//        } else {
+//            throw new InputException("Invalid input. Try again");
+//        }
+//    }
 }
